@@ -21,7 +21,7 @@ Syntax: ./pingstatus.sh [-h] [Target IP address] [Target name] [Success GPIO] [F
   
         h                               - Print this Help.
         
-        Target IP Address               - Valid IP address on the network of desired VPN
+        Target IP Address               - Desired valid IP to ping
         
         Target name                     - A nickname you would like to give to the Target
         
