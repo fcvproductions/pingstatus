@@ -26,7 +26,7 @@ function Help()
      echo "Syntax: $0 [-h] [Target IP address] [Target name] [Success GPIO] [Fail GPIO]"
      echo "  options:"
      echo -e "\th    \t\t\t\t- Print this Help."
-     echo -e "\tTarget IP Address\t\t- Valid IP address on the network of desired VPN"
+     echo -e "\tTarget IP Address\t\t- Desired valid IP to ping"
      echo -e "\tTarget name\t\t\t- A nickname you would like to give to the Target"
      echo -e "\tSuccess GPIO\t\t\t- GPIO Pin to be used for successful reply (02-27)"
      echo -e "\tFail GPIO\t\t\t- GPIO Pin to be used for failed reply (02-27)"
