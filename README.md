@@ -16,12 +16,19 @@ This script requires four parameters to function. Here is the
 syntax and definition of each argument.
 
 Syntax: ./pingstatus.sh [-h] [Target IP address] [Target name] [Success GPIO] [Fail GPIO]
+
   options:
+  
         h                               - Print this Help.
+        
         Target IP Address               - Valid IP address on the network of desired VPN
+        
         Target name                     - A nickname you would like to give to the Target
+        
         Success GPIO                    - GPIO Pin to be used for successful reply (02-27)
+        
         Fail GPIO                       - GPIO Pin to be used for failed reply (02-27)
+        
 
   Example:
 
