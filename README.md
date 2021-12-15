@@ -23,9 +23,9 @@ Create a directory 'pingstatus' under /home/pi and place the script and jpg file
 
 Move the jpg and index.html files to /var/www/html:
 
-mv /home/pi/*.jpg /var/www/html
+sudo mv /home/pi/*.jpg /var/www/html
 
-mv /home/pi/index.html /var/www/html
+sudo mv /home/pi/index.html /var/www/html
 
 To use the script:
 (Note: You may need to run this with a sudo in front for the first time)
