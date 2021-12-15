@@ -125,6 +125,8 @@ function name_directory_prep()
 
      mkdir -p /home/pi/pingstatus/${NAME_Arg}
      rm   -rf /home/pi/pingstatus/${NAME_Arg}/resultname*
+     sudo sed -i "/${NAME_Arg}/d" /var/www/html/index.html
+     sudo sed -i "/${NAME_Arg}/d" /var/www/html/index.html
 
 }
 
@@ -179,6 +181,22 @@ allGPIOOff()
   echo 0 > /sys/class/gpio/gpio${FAIL_Arg}/value
 }
 
+# Utility function to set Web status to Success
+function setWebSuccess()
+{
+     sudo cp /var/www/html/green-light.jpg /var/www/html/${NAME_Arg}-light.jpg
+     sleep $[ ( $RANDOM % 5 )  + 1 ]s
+     sudo sed -i "/<!-- STATUS -->/a <img src="${NAME_Arg}-light.jpg"> "${NAME_Arg}" <br>" /var/www/html/index.html
+}
+
+# Utility function to set Web Status to Fail
+function setWebFail()
+{
+     sudo cp /var/www/html/red-light.jpg /var/www/html/${NAME_Arg}-light.jpg
+     sleep $[ ( $RANDOM % 5 )  + 1 ]s
+     sudo sed -i "/<!-- STATUS -->/a <img src="${NAME_Arg}-light.jpg"> "${NAME_Arg}" <br>" /var/www/html/index.html 
+}
+
 # Main Program Execution
 
 function execute_main_program()
@@ -215,8 +233,14 @@ function execute_main_program()
 
 # Check if file exists and take action based on file found
 
-     if [ -f "/home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}up.txt" ]; then setSuccessOn; fi
-     if [ -f "/home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}down.txt" ]; then setFailOn; fi
+     if [ -f "/home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}up.txt" ]; then
+         setSuccessOn
+         setWebSuccess
+     fi
+     if [ -f "/home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}down.txt" ]; then
+         setFailOn
+         setWebFail
+     fi
 }
 
 if [ $# = 0 ] ; then echo -e "*** No arguments have been entered. Here is the help file to display usage.\n"; Help; fi
