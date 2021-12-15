@@ -10,6 +10,7 @@ INSTALLATION
 First you will want to install apache:
 
 sudo apt-get update
+
 sudo apt-get upgrade
 
 sudo apt install apache2 -y
