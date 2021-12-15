@@ -16,6 +16,7 @@ sudo apt-get upgrade
 sudo apt install apache2 -y
 
 sudo usermod -a -G www-data pi
+
 sudo chown -R -f www-data:www-data /var/www/html
 
 Create a directory 'pingstatus' under /home/pi and place the script and jpg files inside. 
