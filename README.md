@@ -9,9 +9,9 @@ INSTALLATION
 
 First you will want to install apache:
 
-sudo apt-get update
+sudo apt update
 
-sudo apt-get upgrade
+sudo apt upgrade
 
 sudo apt install apache2 -y
 
