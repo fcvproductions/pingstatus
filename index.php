@@ -10,7 +10,7 @@
 
 <h1>VPN Status Page</h1>
 
-<p>Current VPN Status:</p>
+<h2>Current VPN Status:</h2>
 
 <br>
 <?php
