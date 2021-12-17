@@ -19,13 +19,16 @@ sudo usermod -a -G www-data pi
 
 sudo chown -R -f www-data:www-data /var/www/html
 
+sudo apt install php php-mbstring
+
 Create a directory 'pingstatus' under /home/pi and place the script and jpg files inside. 
 
 Move the jpg and index.html files to /var/www/html:
 
 sudo mv /home/pi/*.jpg /var/www/html
 
-sudo mv /home/pi/index.html /var/www/html
+sudo mv /home/pi/index.php /var/www/html
+
 
 To use the script:
 (Note: You may need to run this with a sudo in front for the first time)
