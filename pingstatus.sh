@@ -123,10 +123,9 @@ fi
 function name_directory_prep()
 {
 
-     mkdir -p /home/pi/pingstatus/${NAME_Arg}
-     rm   -rf /home/pi/pingstatus/${NAME_Arg}/resultname*
-     sudo sed -i "/${NAME_Arg}/d" /var/www/html/index.html
-     sudo sed -i "/${NAME_Arg}/d" /var/www/html/index.html
+     mkdir -p /home/pi/pingstatus/data/${NAME_Arg}
+     rm   -rf /home/pi/pingstatus/data/${NAME_Arg}/resultname*
+     sudo mkdir -p /var/www/html/pingstatus
 
 }
 
@@ -134,7 +133,7 @@ function name_directory_prep()
 function ping_target()
 {
 
-     ping -c4 ${IP_Arg} > /home/pi/pingstatus/${NAME_Arg}/name${NAME_Arg}ping.txt
+     ping -c4 ${IP_Arg} > /home/pi/pingstatus/data/${NAME_Arg}/name${NAME_Arg}ping.txt
 
 }
 
@@ -142,7 +141,7 @@ function ping_target()
 function check_ping_results()
 {
 
-     grep -qi "$GREP_Arg" /home/pi/pingstatus/${NAME_Arg}/name${NAME_Arg}ping.txt ; case "$?" in "0") touch /home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}up.txt ;; "1") touch /home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}down.txt ;; *) echo "error" ;; esac
+     grep -qi "$GREP_Arg" /home/pi/pingstatus/data/${NAME_Arg}/name${NAME_Arg}ping.txt ; case "$?" in "0") touch /home/pi/pingstatus/data/${NAME_Arg}/resultname${NAME_Arg}up.txt ;; "1") touch /home/pi/pingstatus/data/${NAME_Arg}/resultname${NAME_Arg}down.txt ;; *) echo "error" ;; esac
 
 }
 
@@ -184,17 +183,13 @@ allGPIOOff()
 # Utility function to set Web status to Success
 function setWebSuccess()
 {
-     sudo cp /var/www/html/green-light.jpg /var/www/html/${NAME_Arg}-light.jpg
-     sleep $[ ( $RANDOM % 5 )  + 1 ]s
-     sudo sed -i "/<!-- STATUS -->/a <img src="${NAME_Arg}-light.jpg"> "${NAME_Arg}" <br>" /var/www/html/index.html
+     sudo cp /var/www/html/green-light.jpg /var/www/html/pingstatus/${NAME_Arg}-light.jpg
 }
 
 # Utility function to set Web Status to Fail
 function setWebFail()
 {
-     sudo cp /var/www/html/red-light.jpg /var/www/html/${NAME_Arg}-light.jpg
-     sleep $[ ( $RANDOM % 5 )  + 1 ]s
-     sudo sed -i "/<!-- STATUS -->/a <img src="${NAME_Arg}-light.jpg"> "${NAME_Arg}" <br>" /var/www/html/index.html 
+     sudo cp /var/www/html/red-light.jpg /var/www/html/pingstatus/${NAME_Arg}-light.jpg
 }
 
 # Main Program Execution
@@ -233,11 +228,11 @@ function execute_main_program()
 
 # Check if file exists and take action based on file found
 
-     if [ -f "/home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}up.txt" ]; then
+     if [ -f "/home/pi/pingstatus/data/${NAME_Arg}/resultname${NAME_Arg}up.txt" ]; then
          setSuccessOn
          setWebSuccess
      fi
-     if [ -f "/home/pi/pingstatus/${NAME_Arg}/resultname${NAME_Arg}down.txt" ]; then
+     if [ -f "/home/pi/pingstatus/data/${NAME_Arg}/resultname${NAME_Arg}down.txt" ]; then
          setFailOn
          setWebFail
      fi
