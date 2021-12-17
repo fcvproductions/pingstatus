@@ -1,5 +1,5 @@
 # pingstatus
-For use with a raspberry pi to verify an IP is alive and will have one GPIO go high from a successful reply or a different GPIO go high from a failed reply.
+For use with a raspberry pi to verify an IP is alive and will have one GPIO go high from a successful reply or a different GPIO go high from a failed reply. It will also display a web page with the results.
 
 The idea for this script came about when a friend and I wanted a display that shows the status of a point to point VPN being up or down with just a simple LED readout. Green for VPN is up and Red for VPN is down. You can use it to ping anything that will reply, really. I decided to write this simple bash script. This is intended to be used with a raspberry Pi and utilizes its GPIO pins for the display of a successful or a failed reply from a ping. We intended on using Green/Red LED's but there is no reason you can't have it attach to a relay and have it do whatever you want (start up revolving lights, start up an air raid siren.. whatever you can imagine..). I have added functionality for a webserver so that you can check the status via a browser in addition to the LED's. If you leave the page up it will automatically refresh every 5 minutes.
 
