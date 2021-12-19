@@ -28,6 +28,7 @@ function Help()
      echo -e "\th    \t\t\t\t- Print this Help."
      echo -e "\tTarget IP Address\t\t- Desired valid IP to ping"
      echo -e "\tTarget name\t\t\t- A nickname you would like to give to the Target"
+     echo -e "\t\t\t\t          *(Note, you cannot use a - in the nickname"
      echo -e "\tSuccess GPIO\t\t\t- GPIO Pin to be used for successful reply (02-27)"
      echo -e "\tFail GPIO\t\t\t- GPIO Pin to be used for failed reply (02-27)"
      echo
@@ -67,6 +68,22 @@ else
   echo 
   Help
   exit 1
+fi
+
+}
+
+# Argument 2 verification
+function verify_second_arg()
+{
+
+if [[ $NAME_Arg =~ ['-'] ]]; then
+    echo yesitdoes
+    echo "***Invalid special character used in name arguement. You cannot use a -"
+    echo
+    Help
+    exit 1
+else
+    echo "Second argument verified"
 fi
 
 }
@@ -200,6 +217,7 @@ function execute_main_program()
 # SECTION Verify Arguments
 
      verify_first_arg
+     verify_second_arg
      verify_third_arg
      verify_fourth_arg
      verify_third_fourth_args_not_equal
