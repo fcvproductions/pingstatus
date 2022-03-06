@@ -23,7 +23,7 @@ sudo apt install php php-mbstring
 
 Create a directory 'pingstatus' under /home/pi and place the script and jpg files inside. 
 
-Move the jpg and index.html files to /var/www/html:
+Move the jpg and index.php files to /var/www/html:
 
 sudo mv /home/pi/*.jpg /var/www/html
 
