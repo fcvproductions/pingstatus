@@ -31,7 +31,7 @@ sudo mv /home/pi/index.php /var/www/html
 
 
 To use the script:
-(Note: You may need to run this with a sudo in front for the first time)
+(Note: This takes about 2 cycles to start working)
 
 USAGE
 
