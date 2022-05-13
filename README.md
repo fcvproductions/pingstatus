@@ -21,13 +21,23 @@ sudo chown -R -f www-data:www-data /var/www/html
 
 sudo apt install php php-mbstring
 
-Create a directory 'pingstatus' under /home/pi and place the script and jpg files inside. 
+Place the contents of this repository in /home/pi
+
+Create a directory 'pingstatus' under /home/pi and place the script inside:
+
+mkdir /home/pi/pingstatus
+
+mv /home/pi/pingstatus.sh /home/pi/pingstatus
 
 Move the jpg and index.php files to /var/www/html:
 
 sudo mv /home/pi/*.jpg /var/www/html
 
 sudo mv /home/pi/index.php /var/www/html
+
+Remove the default index.html from /var/www/html
+
+sudo rm /var/www/html/index.html
 
 
 To use the script:
